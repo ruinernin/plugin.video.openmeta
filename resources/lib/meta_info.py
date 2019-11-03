@@ -65,6 +65,8 @@ def get_trakt_movie_metadata(movie, genres_dict=None):
         info['genre'] = ''
     if movie.get('trailer'):
         info['trailer'] = make_trailer(movie['trailer'])
+    if movie.get('listed_at'):
+        info['dateadded'] = ' '.join(movie['listed_at'].split('.')[0].split('T'))
     return info
 
 def get_tvshow_metadata_trakt(show, genres_dict=None):

@@ -11,7 +11,8 @@ from resources.lib.xswift2 import plugin
 SORT = [
     xbmcplugin.SORT_METHOD_UNSORTED,
     xbmcplugin.SORT_METHOD_LABEL,
-    xbmcplugin.SORT_METHOD_VIDEO_YEAR]
+    xbmcplugin.SORT_METHOD_VIDEO_YEAR,
+    xbmcplugin.SORT_METHOD_DATEADDED]
 
 
 @plugin.route('/my_trakt/lists/trakt_my_lists')
@@ -218,4 +219,4 @@ def _lists_trakt_show_list(list_items):
             items.append(item)
     for item in items:
         item['properties'] = {'fanart_image': plugin.get_addon_fanart()}
-    return items
+    return plugin.finish(items=items, sort_methods=SORT)
